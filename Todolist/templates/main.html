@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>ToDo Web application</h3>
+<form action="addtask" method="POST">
+    {% csrf_token %}
+    <p><input type="text" name="task" placeholder="Description" style="width: 500px; height:100px"></p>
+    <p><input type="text" name="location" placeholder="Location" style="width: 500px;"></p>
+    <p><input type="text" name="date" placeholder="Date" id="" style="width: 500px;"></p>
+    <p><input type="text" name="time" placeholder="Time" id="" style="width: 500px;"></p>
+    <button type="submit" class="btn btn-dark">Add task</button>
+</form>
+
+<table class="table table-dark table-striped" style="margin-top: 30px;">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Task</th>
+        <th scope="col">Location</th>
+        <th scope="col">Date</th>
+        <th scope="col">Time</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+        {% for task in tasks %}
+      <tr>
+        
+        <th scope="row">{{task.id}}</th>
+        <td>{{task.task}}</td>
+        <td>{{task.location}}</td>
+        <td>{{task.date}}</td>
+        <td>{{task.time}}</td>
+       
+      </tr>
+      {% endfor %}
+      
+    </tbody>
+    
+</table>
+  
+<!-- {% for tasks in task%} -->
+
+    <!-- <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table> -->
+    <!-- {{tasks.task}} -->
+    <!-- {% endfor %}  -->
+
+    {% endblock %}
